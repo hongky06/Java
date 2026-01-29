@@ -84,24 +84,32 @@ public class Main {
                     String idXoa = input.nextLine();
                     int vitri = -1;
 
+                    // Tìm vị trí MSSV cần xóa
                     for (int i = 0; i < MSSV.length; i++) {
-                        if ( MSSV[i] == idXoa) {
+                        if (MSSV[i].equals(idXoa)) {
                             vitri = i;
                             break;
                         }
                     }
 
-
                     if (vitri == -1) {
                         System.out.println("Khong tim thay MSSV");
                     } else {
-                        for (int i = vitri; i < MSSV.length - 1; i++) {
-                            MSSV[i] = MSSV[i + 1];
+                        // Tạo mảng mới nhỏ hơn 1
+                        String[] MSSVmoi = new String[MSSV.length - 1];
+                        int indexNew = 0;
+
+                        for (int i = 0; i < MSSV.length; i++) {
+                            if (i != vitri) {
+                                MSSVmoi[indexNew++] = MSSV[i];
+                            }
                         }
-                        MSSV[MSSV.length - 1] = null;
+
+                        MSSV = MSSVmoi;
                         System.out.println("Xoa thanh cong");
                     }
                     break;
+
 
 
 
