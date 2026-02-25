@@ -3,50 +3,90 @@ import java.util.Scanner;
 public class Main {
 
     // PHẦN 1: Xóa phần tử theo vị trí
-    static void xoaPhanTu(int[] a, int n, int index) {
-        for (int i = index; i < n - 1; i++) {
-            a[i] = a[i + 1];
-        }
+    static void xoaPhanTu(int[] mang, int soPhanTu, int viTriXoa) {
 
-        for (int i = 0; i < n - 1; i++) {
-            System.out.print(a[i] + " ");
+        if (viTriXoa >= 0 && viTriXoa < soPhanTu) {
+
+            for (int chiSo = viTriXoa; chiSo < soPhanTu - 1; chiSo++) {
+                mang[chiSo] = mang[chiSo + 1];
+            }
+
+            for (int chiSo = 0; chiSo < soPhanTu - 1; chiSo++) {
+                System.out.print(mang[chiSo] + " ");
+            }
+            System.out.println();
+
+        } else {
+            System.out.println("Vị trí không hợp lệ");
         }
-        System.out.println();
     }
 
     // PHẦN 2: Tìm số còn thiếu
-    static int timSoThieu(int[] a) {
-        int max = a[0];
-        int min = a[0];
+    static int timSoConThieu(int[] mang, int soPhanTu) {
 
-        for (int i = 1; i < a.length; i++) {
-            if (a[i] > max) max = a[i];
-            if (a[i] < min) min = a[i];
+        int soLonNhat = mang[0];
+        int soNhoNhat = mang[0];
+
+        for (int chiSo = 1; chiSo < soPhanTu; chiSo++) {
+            if (mang[chiSo] > soLonNhat) {
+                soLonNhat = mang[chiSo];
+            } else {
+                if (mang[chiSo] < soNhoNhat) {
+                    soNhoNhat = mang[chiSo];
+                }
+            }
         }
 
-        int tongDay = 0;
-        for (int i = min; i <= max; i++) {
-            tongDay += i;
+        int tongDayDayDu = 0;
+        for (int giaTri = soNhoNhat; giaTri <= soLonNhat; giaTri++) {
+            tongDayDayDu = tongDayDayDu + giaTri;
         }
 
-        int tongMang = 0;
-        for (int i = 0; i < a.length; i++) {
-            tongMang += a[i];
+        int tongMangHienTai = 0;
+        for (int chiSo = 0; chiSo < soPhanTu; chiSo++) {
+            tongMangHienTai = tongMangHienTai + mang[chiSo];
         }
 
-        return tongDay - tongMang;
+        return tongDayDayDu - tongMangHienTai;
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        int[] a = {10, 20, 30, 40, 50};
-        System.out.print("Nhập index cần xóa: ");
-        int index = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
 
-        xoaPhanTu(a, a.length, index);
+        System.out.print("Nhập số phần tử của mảng: ");
+        int soPhanTu = scanner.nextInt();
 
-        int[] b = {3, 0, 1};
-        System.out.println("Số còn thiếu: " + timSoThieu(b));
+        int[] mang = new int[soPhanTu];
+
+        System.out.println("Nhập các phần tử:");
+        for (int chiSo = 0; chiSo < soPhanTu; chiSo++) {
+            mang[chiSo] = scanner.nextInt();
+        }
+
+        System.out.print("Nhập vị trí cần xóa: ");
+        int viTriXoa = scanner.nextInt();
+
+        xoaPhanTu(mang, soPhanTu, viTriXoa);
+
+
+
+
+
+
+
+
+        System.out.print("Nhập số phần tử mảng tìm số còn thiếu: ");
+        int soLuong = scanner.nextInt();
+
+        int[] mangSo = new int[soLuong];
+
+        System.out.println("Nhập các phần tử:");
+        for (int chiSo = 0; chiSo < soLuong; chiSo++) {
+            mangSo[chiSo] = scanner.nextInt();
+        }
+
+        int ketQua = timSoConThieu(mangSo, soLuong);
+        System.out.println("Số còn thiếu là: " + ketQua);
     }
 }
