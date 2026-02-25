@@ -7,12 +7,12 @@ public class Main {
 
         if (viTriXoa >= 0 && viTriXoa < soPhanTu) {
 
-            for (int chiSo = viTriXoa; chiSo < soPhanTu - 1; chiSo++) {
-                mang[chiSo] = mang[chiSo + 1];
+            for (int i = viTriXoa; i < soPhanTu - 1; i++) {
+                mang[i] = mang[i + 1];
             }
 
-            for (int chiSo = 0; chiSo < soPhanTu - 1; chiSo++) {
-                System.out.print(mang[chiSo] + " ");
+            for (int i = 0; i < soPhanTu - 1; i++) {
+                System.out.print(mang[i] + " ");
             }
             System.out.println();
 
@@ -27,24 +27,24 @@ public class Main {
         int soLonNhat = mang[0];
         int soNhoNhat = mang[0];
 
-        for (int chiSo = 1; chiSo < soPhanTu; chiSo++) {
-            if (mang[chiSo] > soLonNhat) {
-                soLonNhat = mang[chiSo];
+        for (int i = 1; i < soPhanTu; i++) {
+            if (mang[i] > soLonNhat) {
+                soLonNhat = mang[i];
             } else {
-                if (mang[chiSo] < soNhoNhat) {
-                    soNhoNhat = mang[chiSo];
+                if (mang[i] < soNhoNhat) {
+                    soNhoNhat = mang[i];
                 }
             }
         }
 
         int tongDayDayDu = 0;
-        for (int giaTri = soNhoNhat; giaTri <= soLonNhat; giaTri++) {
-            tongDayDayDu = tongDayDayDu + giaTri;
+        for (int i = soNhoNhat; i <= soLonNhat; i++) {
+            tongDayDayDu = tongDayDayDu + i;
         }
 
         int tongMangHienTai = 0;
-        for (int chiSo = 0; chiSo < soPhanTu; chiSo++) {
-            tongMangHienTai = tongMangHienTai + mang[chiSo];
+        for (int i = 0; i < soPhanTu; i++) {
+            tongMangHienTai = tongMangHienTai + mang[i];
         }
 
         return tongDayDayDu - tongMangHienTai;

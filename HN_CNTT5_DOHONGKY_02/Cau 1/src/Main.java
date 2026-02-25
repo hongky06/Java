@@ -2,26 +2,21 @@ import java.util.Scanner;
 
 public class Main {
 
-    // PHẦN 1 Chuẩn hóa họ tên
+    // PHẦN 1: Chuẩn hóa họ tên
     static String chuanHoaHoTen(String chuoiNhap) {
-
-        if (chuoiNhap == null || chuoiNhap.trim().length() == 0) {
-            return "Lỗi: không nhập nội dung";
-        }
-
         String chuoiTam = "";
+        for (int i = 0; i < chuoiNhap.length(); i++) {
+            char kyTu = chuoiNhap.charAt(i);
 
-        for (int chiSo = 0; chiSo < chuoiNhap.length(); chiSo++) {
-            char kyTu = chuoiNhap.charAt(chiSo);
+            if ((kyTu >= 'a' && kyTu <= 'z')
+                    || (kyTu >= 'A' && kyTu <= 'Z')
+                    || kyTu == ' ') {
 
-            if ((kyTu >= 'a' && kyTu <= 'z') || (kyTu >= 'A' && kyTu <= 'Z') || kyTu == ' ') {
                 chuoiTam = chuoiTam + kyTu;
             }
         }
 
-
         chuoiTam = chuoiTam.trim();
-
         while (chuoiTam.contains("  ")) {
             chuoiTam = chuoiTam.replace("  ", " ");
         }
@@ -29,8 +24,8 @@ public class Main {
         String ketQua = "";
         boolean laKyTuDauTu = true;
 
-        for (int chiSo = 0; chiSo < chuoiTam.length(); chiSo++) {
-            char kyTu = chuoiTam.charAt(chiSo);
+        for (int i = 0; i < chuoiTam.length(); i++) {
+            char kyTu = chuoiTam.charAt(i);
 
             if (kyTu == ' ') {
                 ketQua = ketQua + kyTu;
@@ -47,19 +42,16 @@ public class Main {
 
         return ketQua;
     }
-    // PHẦN 2 Tìm ký tự không lặp lại đầu tiên
+
+    // PHẦN 2: Tìm ký tự không lặp lại đầu tiên
     static String timKyTuKhongLap(String chuoiNhap) {
 
-        if (chuoiNhap == null || chuoiNhap.length() == 0) {
-            return "Lỗi: không nhập nội dung";
-        }
-
-        for (int chiSo1 = 0; chiSo1 < chuoiNhap.length(); chiSo1++) {
-            char kyTu = chuoiNhap.charAt(chiSo1);
+        for (int i = 0; i < chuoiNhap.length(); i++) {
+            char kyTu = chuoiNhap.charAt(i);
             int soLanXuatHien = 0;
 
-            for (int chiSo2 = 0; chiSo2 < chuoiNhap.length(); chiSo2++) {
-                if (chuoiNhap.charAt(chiSo2) == kyTu) {
+            for (int i = 0; i < chuoiNhap.length(); i++) {
+                if (chuoiNhap.charAt(i) == kyTu) {
                     soLanXuatHien = soLanXuatHien + 1;
                 }
             }
@@ -72,16 +64,13 @@ public class Main {
         return "Không tìm thấy";
     }
 
-
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
-
         System.out.print("Nhập họ tên: ");
         String hoTen = scanner.nextLine();
         System.out.println("Kết quả: " + chuanHoaHoTen(hoTen));
-
 
         System.out.print("Nhập chuỗi bất kỳ: ");
         String chuoi = scanner.nextLine();

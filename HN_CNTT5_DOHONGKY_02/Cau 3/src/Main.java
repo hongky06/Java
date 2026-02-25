@@ -43,8 +43,8 @@ public class Main {
         int[] mangA = new int[soPhanTuA];
 
         System.out.println("Nhập mảng A:");
-        for (int chiSo = 0; chiSo < soPhanTuA; chiSo++) {
-            mangA[chiSo] = scanner.nextInt();
+        for (int i = 0; i < soPhanTuA; i++) {
+            mangA[i] = scanner.nextInt();
         }
 
 
@@ -57,8 +57,8 @@ public class Main {
         int[] mangB = new int[soPhanTuB];
 
         System.out.println("Nhập mảng B:");
-        for (int chiSo = 0; chiSo < soPhanTuB; chiSo++) {
-            mangB[chiSo] = scanner.nextInt();
+        for (int i = 0; i < soPhanTuB; i++) {
+            mangB[i] = scanner.nextInt();
         }
 
         System.out.print("Giao của hai mảng là: ");
