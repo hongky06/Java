@@ -32,13 +32,8 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-
+        System.out.println("Nhap chuoi danh muc: ");
         String input = sc.nextLine();
-
-        if (input.trim().isEmpty()) {
-            System.out.println("Lỗi: Biểu thức không hợp lệ");
-            return;
-        }
 
         Stack<Character> stack = new Stack<>();
 
