@@ -26,26 +26,6 @@ public class Main {
                 max = p;
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             int som = 0;
             if (p >= 50.0) {
                 som++;
